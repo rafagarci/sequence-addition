@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora de Series</title>
+</head>
+
+<body style="text-align: center;">
+    <script>
+        function add_sequence(formula, i_0, i_1) {
+            function f(i) {
+                return Number(eval(formula));
+            };
+            let SUM = 0;
+            for (let i = i_0; i <= i_1; i++) {
+                SUM += f(i);
+            }
+            return SUM;
+        };
+
+        function calculate() {
+            let formula = document.getElementById('seq').value;
+            let i_0 = document.getElementById('i_0').value;
+            let i_1 = document.getElementById('i_1').value;
+            let result = add_sequence(formula, i_0, i_1);
+            document.getElementById('result').value = result;
+        };
+    </script>
+
+
+    <div style="margin: auto;">
+        <h1>
+            Calculadora de Series
+        </h1>
+        <h2>
+            Favor de no poner números decimales en los índices
+        </h2>
+        <div>
+            <input id="seq" type="text" placeholder="secuencia (usar i)" />
+            <input id="i_0" type="number" step="1" placeholder="desde" />
+            <input id="i_1" type="number" step="1" placeholder="hasta" />
+            <button onclick="calculate();">Calcular</button>
+        </div>
+        <br>
+        <label for="result">Resultado:</label>
+        <textarea id="result" name="result" rows="1" cols="30"></textarea>
+    </div>
+</body>
+
+</html>
